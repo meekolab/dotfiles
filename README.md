@@ -9,9 +9,10 @@ This repository contains cross-platform dotfiles and setup scripts for quickly c
 To run the setup script directly from git:
 
 ```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 irm https://raw.githubusercontent.com/meekolab/dotfiles/main/install/windows/setup.ps1 | iex
 ```
-
+> 💡 The first command temporarily allows PowerShell scripts to run during this session only.
 > 💡 Make sure to run from **PowerShell as Administrator**
 
 ### ✅ What It Does:
