@@ -3,9 +3,11 @@ $ErrorActionPreference = "Stop"
 
 # Ensure script runs as Administrator
 if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-    Write-Warning "❗ This script must be run as Administrator. Exiting..."
+    Write-Host "❗ This script must be run as Administrator."
+    Read-Host "🔒 Press Enter to exit..."
     exit 1
 }
+
 
 # Check for winget
 if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
