@@ -29,8 +29,11 @@ foreach ($pkg in $packages) {
     winget install --id $pkg --silent --accept-package-agreements --accept-source-agreements
 }
 
-# Reload system PATH to include newly added CLI tools
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
+# Reload full PATH from system and user scopes
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine) +
+            ";" +
+            [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User)
+
 
 # Run chezmoi init/apply
 Write-Host "`Running chezmoi init/apply..."
